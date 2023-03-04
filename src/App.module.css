@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.logo {
+  animation: logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.header {
+  background-color: #8fa1d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header h1 {
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient( #EB2436 25%, #131A6D 50%, #FFD600 75%, #00A650 80%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  background-size: 200%;
+  background-position: -200%;
+  animation: animated-gradient 2s infinite alternate-reverse;
+
+}
+@keyframes animated-gradient{
+  to{
+    background-position: 200%;
+  }
+}
+
+
+main {
+  display: grid;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
