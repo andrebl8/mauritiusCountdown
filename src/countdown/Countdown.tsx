@@ -2,13 +2,16 @@ import type {Component} from 'solid-js';
 
 import logo from './logo.svg';
 import styles from './dropdown.module.css';
-import {createSignal} from "solid-js";
+import {createEffect, createSignal} from "solid-js";
 
 const Countdown: Component = () => {
     const [days, setDay] = createSignal(0);
     const [hours, setHours] = createSignal(0);
     const [minutes, setMinutes] = createSignal(0);
     const [seconds, setSeconds] = createSignal(0);
+
+
+    const [hover, setHover] = createSignal(false);
     const CountDownTimer = () => {
         // Set the target date to July 1, 2023
         const targetDate = new Date('July 1, 2023 00:00:00');
@@ -28,27 +31,80 @@ const Countdown: Component = () => {
                 return;
             }
 
-            // Calculate the remaining days, hours, minutes, and seconds
-            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+            // Calculate the remaining newDays, newHours, newMinutes, and newSeconds
+            const newDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const newHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const newMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const newSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-            setDay(days)
-            setHours(hours)
-            setMinutes(minutes)
-            setSeconds(seconds)
+            setDay(newDays)
+            setHours(newHours)
+            setMinutes(newMinutes)
+
+           if (seconds() !== newSeconds) {
+               setHover(!hover())
+               setSeconds(newSeconds)
+           }
+
+
             // Log the remaining time to the console
-            //console.log(`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+            //console.log(`${newDays} newDays, ${newHours} newHours, ${newMinutes} newMinutes, ${newSeconds} newSeconds`);
         }, 1000);
 
     }
 
+    let buttonstyle={
+        backgroundColor:'',
+        transform: '',
+    }
+    createEffect(() => {
+
+        if(hover()){
+            console.log("green")
+            buttonstyle.backgroundColor="green";
+            buttonstyle.transform = "rotateY(180deg)";
+        }
+        else{
+            console.log("blue")
+            buttonstyle.backgroundColor='blue';
+            buttonstyle.transform = "rotateY(180deg)";
+        }
+    });
+
+
+
+    /*
+    hver gang det kommer ny verdi, flipp kortet
+
+     */
+
+    const addHoverClass = (e: MouseEvent, hoverState: boolean) => {
+        console.log("lelele", e.target)
+        setHover(hoverState);
+    }
+
     CountDownTimer();
-    console.log(days)
     return (
         <div class={styles.test}>
-            <p>{`${days()} days, ${hours()} hours, ${minutes()} minutes, ${seconds()} seconds`}</p>
+            <div class={styles.cardFront}>
+                <p>{`${days()} dager`}</p>
+            </div>
+            <p>{`${hours()} timer`}</p>
+            <p>{`${minutes()} minutter`}</p>
+            <div class={styles.flipContainer }
+                 classList={{[styles.hover]: hover()}}
+
+
+            >
+                <div class={styles.flipper} style={{transform: hover() ? "rotateY(180deg)" :''}}>
+                    <div class={styles.front}>
+                        <p>{`${seconds()} sekunder`}</p>
+                    </div>
+                    <div class={styles.back}>
+                        <p>{`${seconds()} sekunder`}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
