@@ -11,6 +11,8 @@ const FlipperCard: Component<{value: number, label: string, background: string}>
         if (local.value!== value()) {
             setHover(!hover())
             setValue(local.value)
+            setValue(local.value)
+
         }
     })
 

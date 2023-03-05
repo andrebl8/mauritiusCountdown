@@ -19,6 +19,7 @@
   color: white;
 }
 
+
 .header h1 {
   font-size: 70px;
   font-weight: 600;
@@ -37,7 +38,12 @@
     background-position: 200%;
   }
 }
-
+@media only screen and (max-width: 480px) {
+  .header h1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+}
 
 main {
   display: grid;

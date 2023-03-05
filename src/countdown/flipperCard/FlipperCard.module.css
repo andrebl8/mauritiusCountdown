@@ -45,3 +45,15 @@
     background-color: #bbb;
     transform: rotateY(180deg);
 }
+
+@media only screen and (max-width: 480px) {
+    .flipContainer,  .flipper, .front, .back {
+        width: 200px;
+        height: 100px;
+    }
+
+    .flipper p {
+        font-size: 30px;
+        font-weight: 300
+    }
+}
