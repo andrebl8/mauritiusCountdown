@@ -3,6 +3,7 @@ import type {Component} from 'solid-js';
 import logo from './logo.svg';
 import styles from './dropdown.module.css';
 import {createEffect, createSignal} from "solid-js";
+import FlipperCard from "./flipperCard/FlipperCard";
 
 const Countdown: Component = () => {
     const [days, setDay] = createSignal(0);
@@ -40,71 +41,19 @@ const Countdown: Component = () => {
             setDay(newDays)
             setHours(newHours)
             setMinutes(newMinutes)
-
-           if (seconds() !== newSeconds) {
-               setHover(!hover())
-               setSeconds(newSeconds)
-           }
-
-
-            // Log the remaining time to the console
-            //console.log(`${newDays} newDays, ${newHours} newHours, ${newMinutes} newMinutes, ${newSeconds} newSeconds`);
+            setSeconds(newSeconds)
         }, 1000);
 
     }
 
-    let buttonstyle={
-        backgroundColor:'',
-        transform: '',
-    }
-    createEffect(() => {
-
-        if(hover()){
-            console.log("green")
-            buttonstyle.backgroundColor="green";
-            buttonstyle.transform = "rotateY(180deg)";
-        }
-        else{
-            console.log("blue")
-            buttonstyle.backgroundColor='blue';
-            buttonstyle.transform = "rotateY(180deg)";
-        }
-    });
-
-
-
-    /*
-    hver gang det kommer ny verdi, flipp kortet
-
-     */
-
-    const addHoverClass = (e: MouseEvent, hoverState: boolean) => {
-        console.log("lelele", e.target)
-        setHover(hoverState);
-    }
 
     CountDownTimer();
     return (
         <div class={styles.test}>
-            <div class={styles.cardFront}>
-                <p>{`${days()} dager`}</p>
-            </div>
-            <p>{`${hours()} timer`}</p>
-            <p>{`${minutes()} minutter`}</p>
-            <div class={styles.flipContainer }
-                 classList={{[styles.hover]: hover()}}
-
-
-            >
-                <div class={styles.flipper} style={{transform: hover() ? "rotateY(180deg)" :''}}>
-                    <div class={styles.front}>
-                        <p>{`${seconds()} sekunder`}</p>
-                    </div>
-                    <div class={styles.back}>
-                        <p>{`${seconds()} sekunder`}</p>
-                    </div>
-                </div>
-            </div>
+            <FlipperCard value={days()} label={'dager'} background={"#EB2436"}></FlipperCard>
+            <FlipperCard value={hours()} label={'timer'} background={"#131A6D"}></FlipperCard>
+            <FlipperCard value={minutes()} label={'minuter'} background={"#FFD600"}></FlipperCard>
+            <FlipperCard value={seconds()} label={'sekunder'} background={"#00A650"}></FlipperCard>
         </div>
     );
 };
