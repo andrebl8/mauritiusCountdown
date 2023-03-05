@@ -8,7 +8,7 @@ const App: Component = () => {
   return (
     <div class={styles.App}>
       <header class={styles.header}>
-          <h1>Hvor lenge til er det til Mauritius?</h1>
+          <h1>Hvor lenge er det til Mauritius?</h1>
       </header>
       <main style={styles.mainContent}>
         <Countdown></Countdown>
