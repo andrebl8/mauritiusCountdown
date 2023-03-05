@@ -15,7 +15,7 @@
     width: 400px;
     height: 200px;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.4s;
     transform-style: preserve-3d;
 }
 
