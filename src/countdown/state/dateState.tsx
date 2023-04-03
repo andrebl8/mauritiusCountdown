@@ -1,4 +1,5 @@
 import {createSignal} from "solid-js";
+import {setTHE_DAY_HAS_COME} from "../../App";
 
 export const [days, setDay] = createSignal(0);
 export const [hours, setHours] = createSignal(0);
@@ -35,6 +36,7 @@ export const CountDownTimer = () => {
         setHours(newHours)
         setMinutes(newMinutes)
         setSeconds(newSeconds)
+        setTHE_DAY_HAS_COME( days() === 0 && hours() === 0 && minutes() === 0 && seconds() === 0)
     }, 1000);
 
 }
