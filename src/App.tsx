@@ -3,7 +3,8 @@ import styles from './App.module.css';
 import Countdown from "./countdown/Countdown";
 import Fireworks from "./Fireworks/Fireworks";
 import {createSignal, onMount} from "solid-js";
-import {CountDownTimer, days, hours, minutes, seconds} from "./countdown/state/dateState";
+import {CountDownTimer, days} from "./countdown/state/dateState";
+import LoadingCard from "./loadingCard/LoadingCard";
 
 
 const rosh = await import('./assets/rosh.jpg');
@@ -39,7 +40,7 @@ const App: Component = () => {
             </header>
             <main style={styles.mainContent}>
                 { days() !== 0 && <Countdown></Countdown>}
-                { days() === 0 && <h1>BEREGNER</h1>}
+                { days() === 0 && <div class={styles.loadingContainer}><LoadingCard/></div>}
 
                 {THE_DAY_HAS_COME() &&  <Fireworks></Fireworks>}
 

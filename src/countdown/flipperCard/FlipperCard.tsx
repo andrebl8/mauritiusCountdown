@@ -1,6 +1,6 @@
+import {createEffect, createSignal, splitProps} from "solid-js";
 import type { Component } from 'solid-js';
 import styles from './FlipperCard.module.css';
-import {createEffect, createSignal, splitProps} from "solid-js";
 
 const FlipperCard: Component<{value: number, label: string, background: string}> = (props) => {
     const [local,] = splitProps(props, ["value", "label", "background"]);
@@ -13,7 +13,6 @@ const FlipperCard: Component<{value: number, label: string, background: string}>
             setValue(local.value)
         }
     })
-
 
     return (
         <div class={styles.flipContainer} classList={{[styles.hover]: hover()}}>

@@ -17,7 +17,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0 4px 2px, rgba(0, 0, 0, 0.09) 0 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 2px 1px, rgba(0, 0, 0, 0.09) 0 4px 2px, rgba(0, 0, 0, 0.09) 0 8px 4px, rgba(0, 0, 0, 0.09) 0 16px 8px, rgba(0, 0, 0, 0.09) 0 32px 16px;
 }
 
 
@@ -54,6 +54,7 @@ main {
   align-items: center;
   margin: 0;
   padding: 30px;
+  justify-content: center;
 }
 
 @keyframes logo-spin {
@@ -63,4 +64,12 @@ main {
   to {
     transform: rotate(360deg);
   }
+}
+
+.loadingContainer {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
