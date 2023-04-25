@@ -5,6 +5,7 @@ import Fireworks from "./Fireworks/Fireworks";
 import {createSignal, onMount} from "solid-js";
 import {CountDownTimer, days} from "./countdown/state/dateState";
 import LoadingCard from "./loadingCard/LoadingCard";
+import Footer from "./footer/Footer";
 
 
 const rosh = await import('./assets/rosh.jpg');
@@ -45,6 +46,7 @@ const App: Component = () => {
                 {THE_DAY_HAS_COME() &&  <Fireworks></Fireworks>}
 
             </main>
+            <Footer />
         </div>
     );
 };
