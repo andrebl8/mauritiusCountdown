@@ -7,7 +7,35 @@
 }
 
 .wedding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-size: calc(10px + 2vmin);
     color: white;
+}
+
+.bell {
+    height: auto;
+    display: block;
+    animation-name: shake;
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+    animation-iteration-count: 2;
+
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    20%,
+    60% {
+        transform: rotate(6deg);
+    }
+    40%,
+    80% {
+        transform: rotate(-6deg);
+    }
 }
