@@ -18,7 +18,6 @@ export const [THE_DAY_HAS_COME, setTHE_DAY_HAS_COME] = createSignal(false);
 
 const App: Component = () => {
 
-
     onMount(async () => {
         console.log(THE_DAY_HAS_COME())
         CountDownTimer();
