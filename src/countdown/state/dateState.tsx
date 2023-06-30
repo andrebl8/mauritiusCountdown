@@ -10,7 +10,7 @@ export const [loading, setLoading] = createSignal(true);
 
 export const CountDownTimer = () => {
     // Set the target date to July 1, 2023
-    const targetDate = new Date('July 1, 2023 00:00:00');
+    const targetDate = new Date('July 1, 2023 11:00:00');
     console.log(targetDate.toLocaleString('en-US', { timeZone: 'Europe/Oslo'}))
     // Update the countdown every second
     const countdown = setInterval(() => {
