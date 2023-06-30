@@ -19,6 +19,11 @@
     transform-style: preserve-3d;
 }
 
+.flipper-animate {
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+
 /*
 .flipContainer:hover .flipper {
     transform: rotateY(180deg);

@@ -16,7 +16,7 @@ const FlipperCard: Component<{value: number, label: string, background: string}>
 
     return (
         <div class={styles.flipContainer} classList={{[styles.hover]: hover()}}>
-            <div class={`box ${value() !== 0 && styles.flipper}`}  style={{transform: hover() ? "rotateY(180deg)" : ''}}>
+            <div class={`box ${styles.flipper} ${value() !== 0 && styles.flipperAnimate}`}  style={{transform: hover() ? "rotateY(180deg)" : ''}}>
                 <div class={styles.front} style={{background: local.background}}>
                     <p>{`${value()} ${local.label}`}</p>
                 </div>
