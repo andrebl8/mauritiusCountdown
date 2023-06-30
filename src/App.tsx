@@ -3,7 +3,7 @@ import styles from './App.module.css';
 import Countdown from "./countdown/Countdown";
 import Fireworks from "./Fireworks/Fireworks";
 import {createSignal, onMount} from "solid-js";
-import {CountDownTimer, days} from "./countdown/state/dateState";
+import { CountDownTimer, days, loading, THE_DAY_HAS_COME } from "./countdown/state/dateState";
 import LoadingCard from "./loadingCard/LoadingCard";
 import Footer from "./footer/Footer";
 
@@ -11,9 +11,6 @@ import Footer from "./footer/Footer";
 const rosh = await import('./assets/rosh.jpg');
 const background = await import('./assets/background.jpg');
 const mauritiusIsland = await import('./assets/mauritius-island.jpg');
-
-export const [THE_DAY_HAS_COME, setTHE_DAY_HAS_COME] = createSignal(false);
-
 
 
 const App: Component = () => {
@@ -40,9 +37,8 @@ const App: Component = () => {
                 <h1>Hvor lenge er det til Mauritius?</h1>
             </header>
             <main style={styles.mainContent}>
-                { days() !== 0 && <Countdown></Countdown>}
-                { days() === 0 && <div class={styles.loadingContainer}><LoadingCard/></div>}
-
+                { !loading()  && <Countdown></Countdown>}
+                { loading() && <div class={styles.loadingContainer}><LoadingCard/></div>}
                 {THE_DAY_HAS_COME() &&  <Fireworks></Fireworks>}
 
             </main>
