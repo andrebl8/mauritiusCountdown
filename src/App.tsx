@@ -37,9 +37,9 @@ const App: Component = () => {
                 <h1>Hvor lenge er det til Mauritius?</h1>
             </header>
             <main style={styles.mainContent}>
-                { !loading()  && <Countdown></Countdown>}
-                { loading() && <div class={styles.loadingContainer}><LoadingCard/></div>}
-                {THE_DAY_HAS_COME() &&  <Fireworks></Fireworks>}
+           
+                
+                  <Fireworks></Fireworks>
 
             </main>
             <Footer />
